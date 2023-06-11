@@ -84,33 +84,33 @@ public class ListActivity extends AppCompatActivity {
                 points++;
                 pointsSum++;
             }
-            if(checked8.equals("0")){
-                points++;
-                pointsSum++;
+            if(checked8.equals("1")){ // Šlykštūs puslapiai
+                points = points - 7;
+                pointsSum = pointsSum - 7;
             }
-            if(checked9.equals("0")){
-                points++;
-                pointsSum++;
+            if(checked9.equals("1")){ // Nikotinas
+                points = points - 700;
+                pointsSum = pointsSum - 700;
             }
-            if(checked10.equals("0")){
-                points++;
-                pointsSum++;
+            if(checked10.equals("1")){ // Etanolis
+                points = points - 70;
+                pointsSum = pointsSum - 70;
             }
-            if(checked11.equals("0")){
-                points++;
-                pointsSum++;
+            if(checked11.equals("1")){ // Nesveikas Maistas
+                points = points - 7;
+                pointsSum = pointsSum - 7;
             }
-            if(checked12.equals("0")){
-                points++;
-                pointsSum++;
+            if(checked12.equals("1")){ // Vaizdo Žaidimai
+                points = points - 7;
+                pointsSum = pointsSum - 7;
             }
-            if(checked13.equals("0")){
-                points++;
-                pointsSum++;
+            if(checked13.equals("1")){ // Keptas Maistas
+                points = points - 3;
+                pointsSum = pointsSum - 3;
             }
-            if(checked14.equals("0")){
-                points++;
-                pointsSum++;
+            if(checked14.equals("1")){ // Orgazmas
+                points = points - 105;
+                pointsSum = pointsSum - 105;
             }
 
             String pointsString = String.valueOf(points);
