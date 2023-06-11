@@ -7,12 +7,13 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import java.util.Calendar;
 
 public class FormActivity extends AppCompatActivity {
 
@@ -21,6 +22,15 @@ public class FormActivity extends AppCompatActivity {
     private Button clearButton;
     private SQLiteDatabase database;
     private DBHelper dbHelper;
+
+    Calendar calendar = Calendar.getInstance();
+    int year = calendar.get(Calendar.YEAR);
+    int month = calendar.get(Calendar.MONTH) + 1; // Month starts from 0, so add 1
+    int day = calendar.get(Calendar.DAY_OF_MONTH);
+
+    String newMonth = fixMonth(month);
+
+    String date = year + "-" + newMonth + "-" + day;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,37 +53,21 @@ public class FormActivity extends AppCompatActivity {
         checkbox13 = findViewById(R.id.checkBox13);
         checkbox14 = findViewById(R.id.checkBox3);
 
-
         dbHelper = new DBHelper(this);
 
         database = dbHelper.getWritableDatabase();
 
         Button btnBack = findViewById(R.id.button3);
 
-        btnBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                backToMain();
-            }
-        });
+        btnBack.setOnClickListener(v -> backToMain());
 
         Button btnClear = findViewById(R.id.button9);
 
-        btnClear.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                clearBoxes();
-            }
-        });
+        btnClear.setOnClickListener(v -> clearBoxes());
 
         Button btnEnter = findViewById(R.id.button10);
 
-        btnEnter.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                enterData();
-            }
-        });
+        btnEnter.setOnClickListener(v -> enterData());
     }
 
     public void backToMain() {
@@ -91,6 +85,7 @@ public class FormActivity extends AppCompatActivity {
     public void enterData() {
         ContentValues values = new ContentValues();
 
+        values.put("date", date);
         values.put("checked1", checkbox1.isChecked() ? 1 : 0);
         values.put("checked2", checkbox2.isChecked() ? 1 : 0);
         values.put("checked3", checkbox3.isChecked() ? 1 : 0);
@@ -125,6 +120,7 @@ public class FormActivity extends AppCompatActivity {
         if (cursor.moveToFirst()) {
             do {
                 @SuppressLint("Range") int id = cursor.getInt(cursor.getColumnIndex("id"));
+                @SuppressLint("Range") String date = cursor.getString(cursor.getColumnIndex("date"));
                 @SuppressLint("Range") int checked1 = cursor.getInt(cursor.getColumnIndex("checked1"));
                 @SuppressLint("Range") int checked2 = cursor.getInt(cursor.getColumnIndex("checked2"));
                 @SuppressLint("Range") int checked3 = cursor.getInt(cursor.getColumnIndex("checked3"));
@@ -140,7 +136,7 @@ public class FormActivity extends AppCompatActivity {
                 @SuppressLint("Range") int checked13 = cursor.getInt(cursor.getColumnIndex("checked13"));
                 @SuppressLint("Range") int checked14 = cursor.getInt(cursor.getColumnIndex("checked14"));
 
-                String data = "ID: " + id + ", Checked1: " + checked1 + ", Checked2: " + checked2 + ", Checked3: " + checked3 + ", Checked4: " + checked4 + ", Checked5: " + checked5 + ", Checked6: " + checked6 + ", Checked7: " + checked7 + ", Checked8: " + checked8 + ", Checked9: " + checked9 + ", Checked10: " + checked10 + ", Checked11: " + checked11 + ", Checked12: " + checked12 + ", Checked13: " + checked13 + ", Checked14: " + checked14;
+                String data = "ID: " + id + ", Date: " + date + ", Checked1: " + checked1 + ", Checked2: " + checked2 + ", Checked3: " + checked3 + ", Checked4: " + checked4 + ", Checked5: " + checked5 + ", Checked6: " + checked6 + ", Checked7: " + checked7 + ", Checked8: " + checked8 + ", Checked9: " + checked9 + ", Checked10: " + checked10 + ", Checked11: " + checked11 + ", Checked12: " + checked12 + ", Checked13: " + checked13 + ", Checked14: " + checked14;
                 Log.d("Database", data);
             } while (cursor.moveToNext());
         }
@@ -152,6 +148,17 @@ public class FormActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         dbHelper.close();
+    }
+
+    public String fixMonth(int month){
+
+        String newMonth = String.valueOf(month);
+
+        if(month < 10)
+            newMonth = "0" + newMonth;
+
+
+        return newMonth;
     }
 
 }

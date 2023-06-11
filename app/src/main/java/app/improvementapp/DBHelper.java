@@ -13,20 +13,7 @@ public class DBHelper extends SQLiteOpenHelper {
     private static final String TABLE_NAME = "checkbox_table2";
     private static final String COLUMN_ID = "id";
 
-    static Calendar calendar = Calendar.getInstance();
-    static int hour = calendar.get(Calendar.HOUR_OF_DAY);
-    static int minute = calendar.get(Calendar.MINUTE);
-    static int second = calendar.get(Calendar.SECOND);
-
-    // Format the time as a string
-    @SuppressLint("DefaultLocale")
-    static
-    String currentTime = String.format("%02d:%02d:%02d", hour, minute, second);
-
-    // Format the time as a string
-
-
-    private static final String DATE_CREATED = currentTime;
+    private static final String DATE = "date";
     private static final String COLUMN_CHECKED1 = "checked1";
     private static final String COLUMN_CHECKED2 = "checked2";
     private static final String COLUMN_CHECKED3 = "checked3";
@@ -46,20 +33,12 @@ public class DBHelper extends SQLiteOpenHelper {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
-    /*
-    @Override
-    public void onCreate(SQLiteDatabase db) {
-        String createTableQuery = "CREATE TABLE " + TABLE_NAME + "("
-                + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
-                + COLUMN_CHECKED + " INTEGER)";
-        db.execSQL(createTableQuery);
-    }
-    */
 
     @Override
     public void onCreate(SQLiteDatabase db) {
         String createTableQuery = "CREATE TABLE " + TABLE_NAME + "("
                 + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+                + DATE + " TEXT,"
                 + COLUMN_CHECKED1 + " INTEGER,"
                 + COLUMN_CHECKED2 + " INTEGER,"
                 + COLUMN_CHECKED3 + " INTEGER,"

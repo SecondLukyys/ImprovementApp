@@ -14,8 +14,6 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
-    int test = 10;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
