@@ -32,6 +32,11 @@
             android:label="Form Activity">
         </activity>
 
+        <activity
+            android:name=".ListActivity"
+            android:label="List Activity">
+        </activity>
+
     </application>
 
 </manifest>

@@ -18,10 +18,9 @@ import java.util.Calendar;
 public class FormActivity extends AppCompatActivity {
 
     private CheckBox checkbox1, checkbox2, checkbox3, checkbox4, checkbox5, checkbox6, checkbox7, checkbox8, checkbox9, checkbox10, checkbox11, checkbox12, checkbox13, checkbox14;
-    private Button submitButton;
-    private Button clearButton;
     private SQLiteDatabase database;
     private DBHelper dbHelper;
+
 
     Calendar calendar = Calendar.getInstance();
     int year = calendar.get(Calendar.YEAR);
@@ -58,14 +57,12 @@ public class FormActivity extends AppCompatActivity {
         database = dbHelper.getWritableDatabase();
 
         Button btnBack = findViewById(R.id.button3);
+        Button btnClear = findViewById(R.id.button9);
+        Button btnEnter = findViewById(R.id.button10);
 
         btnBack.setOnClickListener(v -> backToMain());
 
-        Button btnClear = findViewById(R.id.button9);
-
         btnClear.setOnClickListener(v -> clearBoxes());
-
-        Button btnEnter = findViewById(R.id.button10);
 
         btnEnter.setOnClickListener(v -> enterData());
     }

@@ -14,28 +14,37 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         Button btnExit = findViewById(R.id.button);
+        Button btnForm = findViewById(R.id.button2);
+        Button btnList = findViewById(R.id.button4);
 
         btnExit.setOnClickListener(v -> exitApp());
 
-        Button btnform = findViewById(R.id.button2);
+        btnForm.setOnClickListener(v -> openFormActivity());
 
-        btnform.setOnClickListener(v -> openFormActivity());
+        btnList.setOnClickListener(v -> openListActivity());
 
-    }
-
-    public void exitApp() {
-        finishAffinity();
     }
 
     public void openFormActivity() {
         Intent intent = new Intent(MainActivity.this, FormActivity.class);
         startActivity(intent);
+    }
+
+    private void openListActivity() {
+        Intent intent = new Intent(MainActivity.this, ListActivity.class);
+        startActivity(intent);
+    }
+
+
+    public void exitApp() {
+        finishAffinity();
     }
 
 }
