@@ -14,7 +14,6 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
         Button btnExit = findViewById(R.id.button);
         Button btnForm = findViewById(R.id.button2);
         Button btnList = findViewById(R.id.button4);
+        Button btnRemove = findViewById(R.id.button5);
 
         btnExit.setOnClickListener(v -> exitApp());
 
@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
 
         btnList.setOnClickListener(v -> openListActivity());
 
+        btnRemove.setOnClickListener(v -> openRemoveActivity());
     }
 
     public void openFormActivity() {
@@ -39,6 +40,11 @@ public class MainActivity extends AppCompatActivity {
 
     private void openListActivity() {
         Intent intent = new Intent(MainActivity.this, ListActivity.class);
+        startActivity(intent);
+    }
+
+    private void openRemoveActivity() {
+        Intent intent = new Intent(MainActivity.this, RemoveActivity.class);
         startActivity(intent);
     }
 
