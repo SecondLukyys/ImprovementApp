@@ -4,16 +4,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 
-// Pabandyti susikurti forma
-// Pabandyti susikurti sąraša
-// Pabandyti susikurti taškų sistemą
-// Pabandyti išsaugoti duomenis
-
+/**
+ * MainActivity class that lets user navigate main maniu from which he is able to access all fuctions
+ */
 public class MainActivity extends AppCompatActivity {
 
+    //TODO Update some stuff, disign and buttons
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,7 +45,6 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(MainActivity.this, RemoveActivity.class);
         startActivity(intent);
     }
-
 
     public void exitApp() {
         finishAffinity();

@@ -10,13 +10,15 @@ import android.util.Log;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import java.util.Calendar;
 
+/**
+ * FormActivity class that lets user to create a new record to a database that tracks good and bad activities, also counts points
+ */
 public class FormActivity extends AppCompatActivity {
 
+    //TODO Upgrade points, choices and logic
     private CheckBox checkbox1, checkbox2, checkbox3, checkbox4, checkbox5, checkbox6, checkbox7, checkbox8, checkbox9, checkbox10, checkbox11, checkbox12, checkbox13, checkbox14;
     private SQLiteDatabase database;
     private DBHelper dbHelper;
@@ -153,7 +155,6 @@ public class FormActivity extends AppCompatActivity {
 
         if(month < 10)
             newMonth = "0" + newMonth;
-
 
         return newMonth;
     }

@@ -1,18 +1,20 @@
 package app.improvementapp;
 
 import android.content.Intent;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+/**
+ * RemoceActivity class that lets user remove a record from a database. Record is removed according to record id. It is easily found in list activity.
+ */
 public class RemoveActivity extends AppCompatActivity {
 
+    //TODO Update code logic. Maybe only design.
     private EditText editText;
 
     @Override

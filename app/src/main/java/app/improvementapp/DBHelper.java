@@ -1,12 +1,16 @@
 package app.improvementapp;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import java.util.Calendar;
 
+/**
+ * Database helper class that enables database integration
+ */
 public class DBHelper extends SQLiteOpenHelper {
+
+    //TODO Improve and extend database tables
+
     private static final String DATABASE_NAME = "checkbox_db.db";
     private static final int DATABASE_VERSION = 2;
 
@@ -55,7 +59,6 @@ public class DBHelper extends SQLiteOpenHelper {
 
         db.execSQL(createTableQuery);
     }
-
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {

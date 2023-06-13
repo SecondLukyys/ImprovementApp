@@ -9,12 +9,15 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+/**
+ * ListActivity class that lets user see all database records, details of date, points
+ */
 public class ListActivity extends AppCompatActivity {
 
+    //TODO Update code
     TextView dataTextView;
     TextView data1TextView;
     DBHelper dbHelper;
-    //private static final String DATE1 = "date";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
